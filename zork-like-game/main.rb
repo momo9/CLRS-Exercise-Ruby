@@ -5,7 +5,7 @@ require "./Tool"
 
 name = Tool.prompt "What is your name?"
 c = Character.new name,100,1
-chen = Character.new "CWG",100,2
+chen = Character.new "CWG",50,2
 
 
 while c.is_alive and chen.is_alive
