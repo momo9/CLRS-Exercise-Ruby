@@ -1,17 +1,36 @@
 require "./FightRoom"
+require "./DeadRoom"
 require "./Character"
 require "./Tool"
-#FightRoom.fight_room
 
-name = Tool.prompt "What is your name?"
+puts <<PARA
+--------
+Prelude
+----------------------------------------------------
+You wake up.
+You feel a headache, and can't remember anything.
+You try hard to recall your memory.
+PARA
+
+name = Tool.prompt "Who are you?"
 c = Character.new name,100,1
-chen = Character.new "CWG",50,2
 
+puts <<PARA
+There are two doors in this room.
+Which would you like to open?
+1. The left door
+2. The right door
+PARA
 
-while c.is_alive and chen.is_alive
-	next_step = Tool.prompt "What would you do?"
-	act1 = next_step.to_i
-	act2 = chen.rand_action
-	Tool.combat_interface c,act1,chen,act2	
+next_move = Tool.prompt
+
+while next_move!="1" and next_move!="2"
+	puts "I don't know what you mean."
+	next_move = Tool.prompt
 end
 
+if next_move=="1"
+	DeadRoom.dead_room	
+else
+	FightRoom.fight_room c	
+end
