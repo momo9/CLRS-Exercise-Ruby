@@ -24,16 +24,21 @@ class Witch < Role
 			puts "It's a peaceful night."
 			return nil
 		end
+		if num_killed==@no
+			puts "You're killed."
+			return nil
+		end
 		choice = prompt "No.#{num_killed} player is killed. Will you save him? [y/n]"
 		if choice=="y"
 			if @antidote
+				@antidote = false
 				return num_killed				
 			else
 				puts "You don't have antidote."
 				return nil
 			end
 		else
-			puts "You didn't use the anitdote."
+			puts "You didn't use the antidote."
 			return nil
 		end
 	end
@@ -43,6 +48,7 @@ class Witch < Role
 		num_poisoned = prompt("Which one?").to_i
 		if choice=="y" and num_saved==nil # when choose to use poison and haven't save any one
 			if @poison
+				@poison = false
 				return num_poisoned
 			else
 				puts "You don't have poison."

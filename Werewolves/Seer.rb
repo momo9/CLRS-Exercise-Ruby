@@ -5,14 +5,13 @@ class Seer < Role
 	
 	include Tool
 	
-	def initialize no,role_list
+	def initialize no
 		super(no)
-		@role_list = role_list
 	end
 	
-	def check
-		no = prompt("Choose the player you want to check:").to_i
-		puts "No.#{no} is a #{@role_list[no].class}"
+	def check role_list,player_num
+		no = prompt("Choose the player you want to check [0..#{player_num-1}]:").to_i
+		puts "No.#{no} is a #{role_list[no].class}"
 	end
 	
 end
