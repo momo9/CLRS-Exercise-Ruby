@@ -22,6 +22,20 @@ def get_pivot(a, p, r)
 	return i+1
 end
 
+def get_pivot_reverse(a, p, r)
+	pivot = a[r-1]
+	i = p-1
+	for j in (p...r-1)
+		if a[j]>=pivot
+			i += 1
+			a[j],a[i] = a[i],a[j]
+		end
+	end
+	a[i+1],a[r-1] = a[r-1],a[i+1]
+	return i+1
+end
+
+
 def get_pivot_bi(a, p, r)
 	i1 = p
 	i2 = r-2
@@ -98,7 +112,7 @@ while true
 	end
 
 	print a,"\n"
-	quick_sort(a, 0, a.length(), method(:get_pivot_mid))
+	quick_sort(a, 0, a.length(), method(:get_pivot_reverse))
 	print a
 	
 	gets.chomp()
