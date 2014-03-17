@@ -1,3 +1,5 @@
+# problem 7-2
+
 def quick_sort(a, p, r, pivot_method)
 #	print [p, r], "\n"
 #	print a,"\n"
